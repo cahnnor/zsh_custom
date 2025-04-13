@@ -1,9 +1,5 @@
-###
-#	Welcome to my theme!!! There's not much to it, it's just robbyrussel with some custom colours.
-###
-
 ####
-# Colours :)
+# Colours
 ###
 
 # Make sure terminal is set to resolve 256 bit colours.
