@@ -22,20 +22,7 @@ eval my_white='$FG[051]'
 eval bad_red='$FG[001]'
 
 ###
-# Terminal Prompt
-###
-
-# %B means bold, otherwise %% is for templating I think. ternary operator is for error handling
-# Right-side = error behaviour, left-side = normal behaviour.
-BAD_PROMPT="%{%B$bad_red%}%1{➜%} %{$bad_red%}%c%{$reset_color%}"
-GOOD_PROMPT="%{%B$my_white%}%1{➜%} %{$pink%}%c%{$reset_color%}"
-
-PROMPT="%(?:$GOOD_PROMPT :$BAD_PROMPT )"
-PROMPT+=' $(git_prompt_info)'
-
-
-###
-# Git Specific prompt stuff
+# Git Specific prompt themes
 ###
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$pastel_blue%}git:(%{$pastel_yellow%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
@@ -56,6 +43,22 @@ function byebye {
   print -P $system_style "bye bye!!"
   sleep 0.2
 }
+
+###
+# Prompt Settings
+###
+function format_prompt {
+  BAD_PROMPT="%{%B$bad_red%}%1{➜%} %{$bad_red%}%c%{$reset_color%}"
+  GOOD_PROMPT="%{%B$my_white%}%1{➜%} %{$pink%}%c%{$reset_color%}"
+  
+  if [ "$1" -eq 0 ]; then
+    echo $GOOD_PROMPT
+  else
+    echo $BAD_PROMPT
+  fi
+}
+
+PROMPT="%(?: $(format_prompt 0) : $(format_prompt 1) ) $(git_prompt_info)"
 
 sysmsg "Heyy! It's %D%t."
 
