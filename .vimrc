@@ -62,10 +62,12 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" Add directory tree on the left with no banner.
+" Add directory tree on the left with no banner which open to the main window
+" on the right.
 let g:netrw_banner=0
 let g:netrw_winsize=15
-autocmd VimEnter * Vexplore
+let g:netrw_altv = 1
+autocmd VimEnter * Lexplore
 
 
 " Map Ctrl+[arrow] to navigate windows`
