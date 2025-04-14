@@ -55,7 +55,7 @@ function format_prompt {
 }
 
 PROMPT="%(?: $(format_prompt 0) : $(format_prompt 1) )"
-PROMPT+=' $(git_prompt_info)'
+PROMPT+='$(git_prompt_info)'
 
 sysmsg "Heyy! It's %D %t."
 
