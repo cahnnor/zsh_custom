@@ -54,7 +54,8 @@ function format_prompt {
   fi
 }
 
-PROMPT="%(?: $(format_prompt 0) : $(format_prompt 1) )$(git_prompt_info)"
+PROMPT="%(?: $(format_prompt 0) : $(format_prompt 1) )"
+PROMPT+=' %B$(git_prompt_info)'
 
 sysmsg "Heyy! It's %D %t."
 
