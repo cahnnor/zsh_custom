@@ -20,10 +20,10 @@ eval bad_red='$FG[001]'
 ###
 # Git Specific prompt themes
 ###
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$pastel_blue%}git:(%{$pastel_yellow%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$pastel_blue%}) %{$pastel_yellow%}%1{✗%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$pastel_blue%})"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{%B$pastel_blue%}git:(%{$pastel_yellow%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{%B$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{%B$pastel_blue%}) %{$pastel_yellow%}%1{✗%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{%B$pastel_blue%})"
 
 ###
 # System messages
@@ -55,7 +55,7 @@ function format_prompt {
 }
 
 PROMPT="%(?: $(format_prompt 0) : $(format_prompt 1) )"
-PROMPT+=' %B$(git_prompt_info)'
+PROMPT+=' $(git_prompt_info)'
 
 sysmsg "Heyy! It's %D %t."
 
