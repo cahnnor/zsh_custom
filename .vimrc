@@ -64,7 +64,9 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " Add directory tree on the left with no banner.
 let g:netrw_banner=0
-30vs.
+let g:netrw_winsize=15
+autocmd VimEnter * Vexplore
+
 
 " Map Ctrl+[arrow] to navigate windows`
 nnoremap <silent> <C-Left> <C-w>h
