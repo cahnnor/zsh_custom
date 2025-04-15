@@ -66,15 +66,24 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " on the right.
 let g:netrw_banner=0
 let g:netrw_winsize=15
-let g:netrw_altv = 1
-autocmd VimEnter * Lexplore
+let g:netrw_altv=1
+set termwinsize=15x0
+autocmd VimEnter * Lexplore 
+" autocmd TabNew * Lexplore!
 
+" open terminal below all splits
+cabbrev bterm bo term
+cabbrev qt tabclose
+
+" Show tabline
+set showtabline=2
 
 " Map Ctrl+[arrow] to navigate windows`
 nnoremap <silent> <C-Left> <C-w>h
 nnoremap <silent> <C-Down> <C-w>j
 nnoremap <silent> <C-Up> <C-w>k
 nnoremap <silent> <C-Right> <C-w>l
+
 
 " Increase/descrease window split size
 if bufwinnr(1)
