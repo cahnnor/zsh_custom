@@ -1,3 +1,15 @@
+" ------------------------------------ Introduction  ----------------------------------- "
+" I am new to vim. I've always opted to use nano when working on remote hosts
+" and vscode for local dev so I've copy pasted many of these settings.
+" My goal here is to make use of no plugins for maximum compatibility and    
+" safety on remote hosts. That makes some sacrifices for UX and a person who
+" uses Vim full-time probably wouldn't like this. What I want out of this
+" is a really good nano, not a replacement for my IDE. Maybe someday,
+" but not now. So I'm fine sacrificing things to keep it useful, predictable,
+" and as easy as possible to use while downloading nothing aside from vim.
+
+
+" ----------------------------------- Basic Settings ----------------------------------- "
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -62,15 +74,28 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" Add directory tree on the left with no banner which open to the main window
-" on the right.
+" ----------------------------------- Directory Tree ----------------------------------- "
+"  Makes vim more IDE-like.
+"  lives on the left with no help banner on the top
+"  opens files on the right split with enter, in new tabs with t
+"  Reopens itself in the new tab to appear like a project drawer.
+
+" settings
 let g:netrw_banner=0
 let g:netrw_winsize=15
 let g:netrw_altv=1
+let g:netrw_liststyle=3
+let g:netrw_list_hide='\.swp$'
 set termwinsize=15x0
-autocmd VimEnter * Lexplore 
-" autocmd TabNew * Lexplore!
 
+" Open on startup
+autocmd VimEnter * Lexplore
+
+" Open on newtab
+" tl;dr we're abusing Explore here so it gets wonky.
+autocmd TabNew * 85Lexplore!
+
+" --------------------------------------- Helpers -------------------------------------- "
 " open terminal below all splits
 cabbrev bterm bo term
 cabbrev qt tabclose
