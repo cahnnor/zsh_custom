@@ -41,3 +41,10 @@ I also threw in an abbreviated command to open a terminal. Running :bterm will o
 
 ## Notes
 The project drawer opens to wherever the terminal window is. I like this for now, but I might change this to open to the directory of the current file when starting Vim? unsure which is better for me atm, I like the idea of being in a directory with my scripts and editing files elsewhere with vim, so idk if I'd want to see the scripts in my sidebar by default or the folder where I'm editing by default and i've gone with the former.
+
+Also added an inputrc file to make the up/down arrows search for the most recent command matching the text you've already input, rather than always going to the last command - similar to macs. Load it with:
+
+```
+bind -f <path-to-here>/.inputrc
+```
+

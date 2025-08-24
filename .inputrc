@@ -1,0 +1,6 @@
+$include /etc/inputrc
+
+# up and down arrow will search history for characters written.
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
