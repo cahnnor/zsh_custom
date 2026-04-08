@@ -25,8 +25,9 @@ filetype indent on
 " Colours
 colorscheme habamax
 
-" Turn on line numbers by default
+" Show current line number, and distance from current line elsewhere.
 set number
+set relativenumber
 
 " Turn on syntax highlighting
 syntax on
