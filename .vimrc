@@ -32,6 +32,10 @@ set relativenumber
 " Turn on syntax highlighting
 syntax on
 
+" Set up statusline
+set laststatus=2
+set statusline=%{StatuslineGit()}
+
 " highlight entire line that the cursor is on
 set cursorline
 
@@ -86,15 +90,17 @@ let g:netrw_banner=0
 let g:netrw_winsize=15
 let g:netrw_altv=1
 let g:netrw_liststyle=3
+let g:netrw_browse_split=4
 let g:netrw_list_hide='\.swp$'
+let g:netrw_chgwin=2
 set termwinsize=15x0
 
 " Open on startup
-autocmd VimEnter * Lexplore
+autocmd VimEnter * Vexplore
 
 " Open on newtab
-" tl;dr we're abusing Explore here so it gets wonky.
-autocmd TabNew * 85Lexplore!
+" We're abusing Explore here so it gets wonky.
+autocmd TabNew * 85Vexplore! expand('%:h:p')
 
 " --------------------------------------- Helpers -------------------------------------- "
 " open terminal below all splits
@@ -116,4 +122,13 @@ if bufwinnr(1)
 	map + <C-W>+
 	map - <C-W>-
 endif
+
+function! GitBranch()
+  return system("git -C " . expand('%:p:h') . " rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
 
