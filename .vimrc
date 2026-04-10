@@ -129,6 +129,10 @@ endfunction
 
 function! StatuslineGit()
   let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+  if expand('%n') =~? "NetrwTreeListing"
+    return "Tree"
+  else 
+    return strlen(l:branchname) > 0?expand('%:p').' '.'('.l:branchname.')':''
+  endif
 endfunction
 
